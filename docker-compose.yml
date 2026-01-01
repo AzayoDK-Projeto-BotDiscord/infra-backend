@@ -1,11 +1,11 @@
 version: "3.3"
 services:
   database:
-    image: mysql:5.7
-    container_name: mysql
+    image: mysql:latest
+    container_name: mysql-botdiscord
     restart: always
     environment:
-      # MYSQL_DATABASE: "dart"
+      MYSQL_DATABASE: "dart"
       MYSQL_USER: ""
       MYSQL_PASSWORD: ""
       MYSQL_ROOT_PASSWORD: ""
