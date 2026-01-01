@@ -1,7 +1,7 @@
 version: "3.3"
 services:
   database:
-    image: mysql:latest
+    image: mysql:8.0.32
     container_name: mysql-botdiscord
     restart: always
     environment:
@@ -10,9 +10,9 @@ services:
       MYSQL_PASSWORD: ""
       MYSQL_ROOT_PASSWORD: ""
     ports:
-      - "3307:3306"
+      - "3306:3306"
     expose:
-      - "3307"
+      - "3306"
     volumes:
       - "./volumes/mysql:/var/lib/mysql"
       # - "./database.sql:/docker-entrypoint-initdb.d/database.sql"
