@@ -47,16 +47,15 @@ CREATE TABLE IF NOT EXISTS `nyxara`.`tb_users` (
   `username` VARCHAR(45) NOT NULL,
   `email` VARCHAR(110) NOT NULL,
   `password` VARCHAR(225) NOT NULL,
-  `status` VARCHAR(1) NOT NULL,
   `dtCreated` DATETIME DEFAULT NOW(),
   `dtUpdated` DATETIME NULL,
   `idPermission` INT NOT NULL,
   `idStatus` INT NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `idUserDiscord_UNIQUE` (`idUserDiscord` ASC) VISIBLE,
-  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
-  INDEX `fk_tb_users_tb_permission_idx` (`idPermission` ASC) VISIBLE,
-  INDEX `fk_tb_users_tb_status1_idx` (`idStatus` ASC) VISIBLE,
+  UNIQUE INDEX `idUserDiscord_UNIQUE` (`idUserDiscord` ASC) ,
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) ,
+  INDEX `fk_tb_users_tb_permission_idx` (`idPermission` ASC) ,
+  INDEX `fk_tb_users_tb_status1_idx` (`idStatus` ASC) ,
   CONSTRAINT `fk_tb_users_tb_permission`
     FOREIGN KEY (`idPermission`)
     REFERENCES `nyxara`.`tb_permission` (`id`)
@@ -107,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `nyxara`.`tb_discord_servers` (
   `dtCreated` DATETIME DEFAULT NOW(),
   `dtUpdated` DATETIME NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `idServerDiscord_UNIQUE` (`idServerDiscord` ASC) VISIBLE)
+  UNIQUE INDEX `idServerDiscord_UNIQUE` (`idServerDiscord` ASC))
 ENGINE = InnoDB;
 
 
@@ -130,8 +129,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `nyxara`.`tb_users_playlist` (
   `idUser` INT NOT NULL AUTO_INCREMENT,
   `idPlaylist` INT NOT NULL,
-  INDEX `fk_tb_user_playlist_tb_users1_idx` (`idUser` ASC) VISIBLE,
-  INDEX `fk_tb_user_playlist_tb_playlist1_idx` (`idPlaylist` ASC) VISIBLE,
+  INDEX `fk_tb_user_playlist_tb_users1_idx` (`idUser` ASC) ,
+  INDEX `fk_tb_user_playlist_tb_playlist1_idx` (`idPlaylist` ASC) ,
   CONSTRAINT `fk_tb_user_playlist_tb_users1`
     FOREIGN KEY (`idUser`)
     REFERENCES `nyxara`.`tb_users` (`id`)
@@ -151,8 +150,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `nyxara`.`tb_users_discord_server` (
   `idUser` INT NOT NULL,
   `idMusicHistory` INT NOT NULL,
-  INDEX `fk_tb_users_music_history_tb_users1_idx` (`idUser` ASC) VISIBLE,
-  INDEX `fk_tb_users_music_history_tb_music_history1_idx` (`idMusicHistory` ASC) VISIBLE,
+  INDEX `fk_tb_users_music_history_tb_users1_idx` (`idUser` ASC) ,
+  INDEX `fk_tb_users_music_history_tb_music_history1_idx` (`idMusicHistory` ASC) ,
   CONSTRAINT `fk_tb_users_music_history_tb_users1`
     FOREIGN KEY (`idUser`)
     REFERENCES `nyxara`.`tb_users` (`id`)
@@ -172,8 +171,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `nyxara`.`tb_users_dsicord_servers` (
   `idUser` INT NOT NULL,
   `idDiscordServer` INT NOT NULL,
-  INDEX `fk_table1_tb_users1_idx` (`idUser` ASC) VISIBLE,
-  INDEX `fk_table1_tb_discord_server1_idx` (`idDiscordServer` ASC) VISIBLE,
+  INDEX `fk_table1_tb_users1_idx` (`idUser` ASC) ,
+  INDEX `fk_table1_tb_discord_server1_idx` (`idDiscordServer` ASC) ,
   CONSTRAINT `fk_table1_tb_users1`
     FOREIGN KEY (`idUser`)
     REFERENCES `nyxara`.`tb_users` (`id`)
@@ -193,8 +192,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `nyxara`.`tb_discord_servers_bot_configuretion` (
   `idDiscordServer` INT NOT NULL,
   `IdBotConfiguretion` INT NOT NULL,
-  INDEX `fk_tb_discord_servers_bot_configuretion_tb_discord_servers1_idx` (`idDiscordServer` ASC) VISIBLE,
-  INDEX `fk_tb_discord_servers_bot_configuretion_tb_bot_configuretio_idx` (`IdBotConfiguretion` ASC) VISIBLE,
+  INDEX `fk_tb_discord_servers_bot_configuretion_tb_discord_servers1_idx` (`idDiscordServer` ASC) ,
+  INDEX `fk_tb_discord_servers_bot_configuretion_tb_bot_configuretio_idx` (`IdBotConfiguretion` ASC) ,
   CONSTRAINT `fk_tb_discord_servers_bot_configuretion_tb_discord_servers1`
     FOREIGN KEY (`idDiscordServer`)
     REFERENCES `nyxara`.`tb_discord_servers` (`id`)
