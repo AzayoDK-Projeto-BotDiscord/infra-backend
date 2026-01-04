@@ -47,7 +47,6 @@ CREATE TABLE IF NOT EXISTS `nyxara`.`tb_users` (
   `username` VARCHAR(45) NOT NULL,
   `email` VARCHAR(110) NOT NULL,
   `password` VARCHAR(225) NOT NULL,
-  `status` VARCHAR(1) NOT NULL,
   `dtCreated` DATETIME DEFAULT NOW(),
   `dtUpdated` DATETIME NULL,
   `idPermission` INT NOT NULL,
